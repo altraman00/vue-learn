@@ -65,16 +65,6 @@ export default new Router({
           component: PageFour
         }
       ]
-    },
-    {
-      path: '/home',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About
     }
   ]
 })
