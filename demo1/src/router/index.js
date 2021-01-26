@@ -18,6 +18,7 @@ export default new Router({
       path: '/',
       name: '导航一',
       component: Index,
+      redirect: '/home',
       children: [
         {
           path: '/home',
