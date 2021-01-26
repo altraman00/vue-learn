@@ -5,10 +5,6 @@ import About from '../views/About'
 import Index from '../views/Index'
 import BookManager from '../views/book/BookManager'
 import AddBook from '../views/book/AddBook'
-import PageOne from '../views/book/PageOne'
-import PageTwo from '../views/book/PageTwo'
-import PageThree from '../views/book/PageThree'
-import PageFour from '../views/book/PageFour'
 
 Vue.use(Router)
 
@@ -16,9 +12,26 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: '导航一',
+      name: '图书管理',
       component: Index,
-      redirect: '/home',
+      redirect: '/bookManager',
+      children: [
+        {
+          path: '/bookManager',
+          name: '管理图书',
+          component: BookManager
+        },
+        {
+          path: '/addBook',
+          name: '添加图书',
+          component: AddBook
+        }
+      ]
+    },
+    {
+      path: '/index',
+      name: '其他',
+      component: Index,
       children: [
         {
           path: '/home',
@@ -29,40 +42,6 @@ export default new Router({
           path: '/about',
           name: 'About',
           component: About
-        }
-      ]
-    },
-    {
-      path: '/addBook',
-      name: '导航二',
-      component: AddBook,
-      children: [
-        {
-          path: '/pageOne',
-          name: '页面一',
-          component: PageOne
-        },
-        {
-          path: '/pageTwo',
-          name: '页面二',
-          component: PageTwo
-        }
-      ]
-    },
-    {
-      path: '/bookManager',
-      name: '导航三',
-      component: BookManager,
-      children: [
-        {
-          path: '/PageThree',
-          name: '页面三',
-          component: PageThree
-        },
-        {
-          path: '/PageFour',
-          name: '页面四',
-          component: PageFour
         }
       ]
     }
