@@ -5,6 +5,7 @@ import About from '../views/About'
 import Index from '../views/Index'
 import BookManager from '../views/book/BookManager'
 import AddBook from '../views/book/AddBook'
+import UpdateBook from '../views/book/UpdateBook'
 
 Vue.use(Router)
 
@@ -13,8 +14,9 @@ export default new Router({
     {
       path: '/',
       name: '图书管理',
-      component: Index,
       redirect: '/bookManager',
+      component: Index,
+      show: true,
       children: [
         {
           path: '/bookManager',
@@ -32,6 +34,7 @@ export default new Router({
       path: '/index',
       name: '其他',
       component: Index,
+      show: true,
       children: [
         {
           path: '/home',
@@ -44,6 +47,12 @@ export default new Router({
           component: About
         }
       ]
+    },
+    {
+      path: '/updateBook',
+      name: '更新图书',
+      component: UpdateBook,
+      show: false
     }
   ]
 })

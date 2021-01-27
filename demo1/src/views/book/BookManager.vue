@@ -1,6 +1,8 @@
 <template>
   <div>
     <h3>图书管理</h3>
+<!--    <input :disable="true"/>打开-->
+<!--    <input disable="true"/>打开-->
     <!-- 表格组件 -->
     <el-table
       :data="tableData"
@@ -15,7 +17,7 @@
         label="操作"
         width="100">
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+          <el-button @click="checkClick(scope.row)" type="text" size="small">查看</el-button>
           <el-button type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
@@ -55,8 +57,9 @@ export default {
     }
   },
   methods: {
-    handleClick (row) {
-      alert(row)
+    checkClick (row) {
+      console.log(row)
+      alert('id:' + row.id + ' ---> author:' + row.author + ' ---> name:' + row.name)
     },
     changePage (currPage) {
       const _this = this

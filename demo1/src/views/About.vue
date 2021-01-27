@@ -3,8 +3,10 @@
     <h3>我是about页面</h3>
     <router-view></router-view>
 
-    <input v-model="inputValue"/>
+    message : <input v-model="inputValue"/>
     <button @click="handleSubmit">提交</button>
+    <p>message is : {{inputValue}}</p>
+
     <ul>
       <add-item v-for="(item,index) of list" :key="index" :content="item" :index="index"></add-item>
     </ul>
@@ -33,7 +35,7 @@ export default {
   components: {
     'add-item': AddItem
   },
-  props: {},
+  props: [],
   data () {
     return {
       inputValue: ' ',
