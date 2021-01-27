@@ -18,7 +18,7 @@
         width="100">
         <template slot-scope="scope">
           <el-button @click="editClick(scope.row)" type="text" size="small">修改</el-button>
-          <el-button type="text" size="small">删除</el-button>
+          <el-button type="text" size="small" @click="deleteClick(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -65,6 +65,19 @@ export default {
         path: '/editBook',
         query: {
           id: row.id
+        }
+      })
+    },
+    deleteClick (row) {
+      const _this = this
+      const url = 'http://localhost:8181/book/deleteById/' + row.id
+      axios.delete(url).then(function (resp) {
+        console.log(resp)
+        if (resp.status === 200) {
+          _this.$message.success('删除成功')
+          window.location.reload()
+        } else {
+          _this.$message.error('删除失败')
         }
       })
     },
