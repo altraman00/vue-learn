@@ -1,7 +1,8 @@
 <template>
   <div>
+
     <h3>EditBook</h3>
-    <router-view></router-view>
+<!--    <router-view></router-view>-->
 
     <div style="margin: 20px;"></div>
 
@@ -23,8 +24,64 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
-  name: 'EditBook'
+  name: 'EditBook',
+  data () {
+    return {
+      labelPosition: 'right',
+      ruleForm: {
+        id: '',
+        name: '',
+        author: ''
+      },
+      rules: {
+        name: [
+          { required: true, message: '图书名称不能为空', trigger: 'blur' }
+        ],
+        author: [
+          { required: true, message: '作者不能为空', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  methods: {
+    submitForm (formName) {
+      const _this = this
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          const url = 'http://localhost:8181/book/update'
+          axios.put(url, this.ruleForm).then(function (resp) {
+            console.log(resp)
+            if (resp.data === 'success') {
+              console.log(resp.data)
+              if (resp.data === 'success') {
+                _this.$alert('《' + _this.ruleForm.name + '》更新成功', '消息', {
+                  confirmButtonText: '确定',
+                  callback: action => {
+                    _this.$router.push('/BookManager')
+                  }
+                })
+              } else {
+                _this.$message.error('更新失败')
+              }
+            }
+          })
+        } else {
+          _this.$message.error('更新失败')
+        }
+      })
+    }
+  },
+  created () {
+    const _this = this
+    const url = 'http://localhost:8181/book/findById/' + this.$route.query.id
+    axios.get(url).then(function (resp) {
+      _this.ruleForm = resp.data
+    })
+  }
 }
 </script>
 

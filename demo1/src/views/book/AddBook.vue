@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>AddBook</h3>
-    <router-view></router-view>
+<!--    <router-view></router-view>-->
 
     <div style="margin: 20px;"></div>
 

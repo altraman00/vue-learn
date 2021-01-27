@@ -54,5 +54,6 @@ export default new Router({
       component: EditBook,
       show: false
     }
+
   ]
 })

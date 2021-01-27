@@ -60,15 +60,18 @@ export default {
     editClick (row) {
       const _this = this
       console.log(row)
-      alert('id:' + row.id + ' ---> author:' + row.author + ' ---> name:' + row.name)
-      _this.$router.push('/updateBook')
+      // alert('id:' + row.id + ' ---> author:' + row.author + ' ---> name:' + row.name)
+      _this.$router.push({
+        path: '/editBook',
+        query: {
+          id: row.id
+        }
+      })
     },
     changePage (currPage) {
       const _this = this
       const url = 'http://localhost:8181/book/findAll/+' + (currPage - 1) + '/5'
       axios.get(url).then(function (resp) {
-        console.log('***********')
-        console.log(resp)
         _this.tableData = resp.data.content
         _this.totalSize = resp.data.totalElements
       })
