@@ -17,8 +17,8 @@
         label="操作"
         width="100">
         <template slot-scope="scope">
-          <el-button @click="checkClick(scope.row)" type="text" size="small">查看</el-button>
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button @click="editClick(scope.row)" type="text" size="small">修改</el-button>
+          <el-button type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -57,9 +57,11 @@ export default {
     }
   },
   methods: {
-    checkClick (row) {
+    editClick (row) {
+      const _this = this
       console.log(row)
       alert('id:' + row.id + ' ---> author:' + row.author + ' ---> name:' + row.name)
+      _this.$router.push('/updateBook')
     },
     changePage (currPage) {
       const _this = this

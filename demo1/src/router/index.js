@@ -5,7 +5,7 @@ import About from '../views/About'
 import Index from '../views/Index'
 import BookManager from '../views/book/BookManager'
 import AddBook from '../views/book/AddBook'
-import UpdateBook from '../views/book/UpdateBook'
+import EditBook from '../views/book/EditBook'
 
 Vue.use(Router)
 
@@ -49,9 +49,9 @@ export default new Router({
       ]
     },
     {
-      path: '/updateBook',
+      path: '/editBook',
       name: '更新图书',
-      component: UpdateBook,
+      component: EditBook,
       show: false
     }
   ]

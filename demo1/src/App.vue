@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <router-link to="/addBook"><button>Go to addBook</button></router-link>
     <router-link to="/bookManager"><button>Go to bookManager</button></router-link>
     <router-link to="/home"><button>Go to home</button></router-link>
